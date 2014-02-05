@@ -6,6 +6,11 @@
     "author": "Dane Springmeyer <springmeyer>",
     "version": "0.2.8",
     "main": "./lib/osrm.js",
+    "bin": {
+        "osrm-datastore": "./lib/binding/osrm-datastore",
+        "osrm-extract": "./lib/binding/osrm-extract",
+        "osrm-prepare": "./lib/binding/osrm-prepare"
+    },
     "bugs": {
         "email": "dane@mapbox.com",
         "url": "https://github.com/DennisOSRM/Project-OSRM/issues"
