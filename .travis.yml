@@ -13,7 +13,9 @@ matrix:
      - os: linux
        compiler: clang
        env: NODE_VERSION="0.10.36"
-
+     - os: linux
+       compiler: clang
+       env: NODE_VERSION="0.10.36" BUILD_ARGS="--debug"
 env:
   global:
    - JOBS: "12"
@@ -39,14 +41,16 @@ before_install:
 install:
 - source ./bootstrap.sh
 - if [[ ${COVERAGE} == true ]]; then
-    LDFLAGS="--coverage" CXXFLAGS="--coverage" npm install --build-from-source --debug --clang=1;
+    LDFLAGS="--coverage" CXXFLAGS="--coverage" npm install --build-from-source --debug --clang=1 ${BUILD_ARGS};
   else
-    npm install --build-from-source --clang=1;
+    npm install --build-from-source --clang=1 ${BUILD_ARGS};
   fi;
 
 script:
 - RESULT=0
-- catchsegv make test || RESULT=$?
+# prepare tests
+- make berlin-latest.osrm.hsgr
+- catchsegv node ./node_modules/.bin/mocha ./test || RESULT=$?
 - if [[ ${RESULT} != 0 ]]; then exit $RESULT; fi
 - if [[ ${COVERAGE} == true ]]; then cpp-coveralls --exclude node_modules --exclude mason_packages --exclude tests --build-root build --gcov-options '\-lp' --exclude doc --exclude build/Release/obj/gen; fi;
 - ./scripts/publish.sh
