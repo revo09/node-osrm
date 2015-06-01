@@ -117,6 +117,7 @@ function main() {
         cmake ../ -DCMAKE_INSTALL_PREFIX=${MASON_HOME} \
           -DCMAKE_CXX_COMPILER="$CXX" \
           -DBoost_NO_SYSTEM_PATHS=ON \
+          -DENABLE_JSON_LOGGING=ON \
           -DTBB_INSTALL_DIR=${MASON_HOME} \
           -DCMAKE_INCLUDE_PATH=${MASON_HOME}/include \
           -DCMAKE_LIBRARY_PATH=${MASON_HOME}/lib \
