@@ -117,6 +117,7 @@ function main() {
         cd build
         cmake ../ -DCMAKE_INSTALL_PREFIX=${MASON_HOME} \
           -DCMAKE_CXX_COMPILER="$CXX" \
+          -DCMAKE_CXX_FLAGS="-g -ggdb -fno-omit-frame-pointer -fno-inline" \
           -DBoost_NO_SYSTEM_PATHS=ON \
           -DTBB_INSTALL_DIR=${MASON_HOME} \
           -DCMAKE_INCLUDE_PATH=${MASON_HOME}/include \
