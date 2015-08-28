@@ -273,9 +273,9 @@ it('trip: routes Berlin with options', function(done) {
         assert.ifError(err);
         for (t = 0; t < trip.trips.length; t++) {
             assert.equal(trip.trips[t].status_message, 'Found route between points');
-            assert.equal(undefined, trip.trips[t]route_instructions);
-            assert.equal(undefined, trip.trips[t]alternative_geometries);
-            assert.equal(undefined, trip.trips[t]route_geometry);
+            assert.equal(undefined, trip.trips[t].route_instructions);
+            assert.equal(undefined, trip.trips[t].alternative_geometries);
+            assert.equal(undefined, trip.trips[t].route_geometry);
         }
         done();
     });
