@@ -359,7 +359,7 @@ NAN_METHOD(Engine::match)
 
         if (!coordinate->IsArray()) {
             NanThrowError("coordinates must be an array of (lat/long) pairs");
-            NanReturnUndefined();
+            //NanReturnUndefined();
         }
 
         Local<Array> coordinate_pair = Local<Array>::Cast(coordinate);
